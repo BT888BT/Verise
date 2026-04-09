@@ -2,73 +2,80 @@
 
 import { useScrollReveal } from '@/lib/useScrollReveal';
 
+const ACCENT = '#8099b0';
+const ACCENT_LIGHT = '#a8bac8';
+
 export default function About() {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="about" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background accent */}
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-5">
+    <section id="about" className="relative py-28 md:py-36 overflow-hidden">
+      {/* Subtle background circles */}
+      <div className="absolute top-0 right-0 w-1/2 h-full opacity-[0.03] pointer-events-none">
         <svg viewBox="0 0 500 800" fill="none" className="w-full h-full">
-          <circle cx="400" cy="200" r="300" stroke="#14b88a" strokeWidth="0.5" />
-          <circle cx="400" cy="200" r="250" stroke="#14b88a" strokeWidth="0.5" />
-          <circle cx="400" cy="200" r="200" stroke="#14b88a" strokeWidth="0.5" />
+          <circle cx="400" cy="200" r="300" stroke={ACCENT_LIGHT} strokeWidth="0.5" />
+          <circle cx="400" cy="200" r="220" stroke={ACCENT_LIGHT} strokeWidth="0.5" />
+          <circle cx="400" cy="200" r="140" stroke={ACCENT_LIGHT} strokeWidth="0.5" />
         </svg>
       </div>
 
       <div className="max-w-7xl mx-auto px-6" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - visual */}
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+
+          {/* Left — visual */}
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'}`}>
             <div className="relative">
-              {/* Main image placeholder */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-midnight-800 to-brand-950/30 border border-midnight-700/30">
+              <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden border border-brand-500/12"
+                style={{ background: 'linear-gradient(135deg, #191c26, #0d0e12)' }}>
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <svg viewBox="0 0 80 80" fill="none" className="w-20 h-20 mb-4 opacity-40">
-                    <path d="M40 10L70 25V55L40 70L10 55V25L40 10Z" stroke="#14b88a" strokeWidth="1" />
-                    <circle cx="40" cy="40" r="8" stroke="#14b88a" strokeWidth="1" />
-                    <path d="M40 10V32M40 48V70M10 25L32 37M48 43L70 55M70 25L48 37M32 43L10 55" stroke="#14b88a" strokeWidth="0.5" opacity="0.4" />
+                  <svg viewBox="0 0 80 80" fill="none" className="w-16 h-16 mb-4 opacity-25">
+                    <path d="M40 10L70 25V55L40 70L10 55V25L40 10Z" stroke={ACCENT} strokeWidth="0.8" />
+                    <circle cx="40" cy="40" r="8" stroke={ACCENT} strokeWidth="0.8" />
+                    <path d="M40 10V32M40 48V70M10 25L32 37M48 43L70 55M70 25L48 37M32 43L10 55"
+                      stroke={ACCENT} strokeWidth="0.4" opacity="0.4" />
                   </svg>
-                  <span className="text-midnight-500 text-sm">Team / Drone Photo</span>
+                  <span className="text-brand-600 text-xs tracking-widest uppercase">Team / Drone Photo</span>
                 </div>
               </div>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-6 -right-4 md:-right-8 bg-midnight-900/90 backdrop-blur-xl rounded-2xl p-5 border border-brand-500/20 shadow-2xl">
+              {/* Credential badge */}
+              <div className="absolute -bottom-5 -right-4 md:-right-6 backdrop-blur-xl rounded-sm p-5 border border-brand-500/20 shadow-2xl"
+                style={{ background: 'rgba(19,21,28,0.95)' }}>
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center">
-                    <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6">
-                      <path d="M9 12L11 14L15 10" stroke="#14b88a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#14b88a" strokeWidth="1.5" />
+                  <div className="w-10 h-10 rounded-sm border border-brand-500/20 flex items-center justify-center"
+                    style={{ background: 'rgba(98,125,150,0.08)' }}>
+                    <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5">
+                      <path d="M9 12L11 14L15 10" stroke={ACCENT} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <circle cx="12" cy="12" r="9" stroke={ACCENT} strokeWidth="1.2" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-white font-bold text-sm">CASA Certified</div>
-                    <div className="text-midnight-400 text-xs">Licensed & Insured</div>
+                    <div className="text-white font-semibold text-sm tracking-wide">CASA Certified</div>
+                    <div className="text-brand-500 text-xs tracking-wider">Licensed & Insured</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right - content */}
+          {/* Right — content */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'}`}>
-            <span className="text-brand-400 text-sm font-semibold tracking-[0.2em] uppercase">About Verise</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mt-4 mb-6">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px w-10 bg-brand-500/40" />
+              <span className="text-brand-400 text-[10px] font-medium tracking-[0.35em] uppercase">About Verise</span>
+            </div>
+            <h2 className="font-display font-light text-4xl md:text-5xl text-white mb-8" style={{ lineHeight: 1.1 }}>
               Precision Meets{' '}
-              <span className="bg-gradient-to-r from-brand-400 to-brand-300 bg-clip-text text-transparent">
-                Artistry
-              </span>
+              <em className="not-italic text-brand-300">Artistry</em>
             </h2>
-            <div className="space-y-4 text-midnight-300 leading-relaxed">
+            <div className="space-y-5 text-brand-500 leading-relaxed font-light text-[15px]">
               <p>
-                At Verise Photography, we combine cutting-edge drone technology with a cinematographer's eye
+                At Verise Photography, we combine cutting-edge drone technology with a cinematographer&apos;s eye
                 for composition. Every flight is planned with precision, every frame captured with purpose.
               </p>
               <p>
                 Our CASA-certified pilots bring years of experience across residential, commercial, industrial,
-                and agricultural projects. We understand that aerial content isn't just about getting a camera
-                in the sky — it's about capturing the perspective that tells your story.
+                and agricultural projects — aerial content that tells your story with clarity and impact.
               </p>
               <p>
                 From single property shoots to ongoing construction documentation programs, we deliver
@@ -76,23 +83,24 @@ export default function About() {
               </p>
             </div>
 
-            {/* Feature points */}
-            <div className="grid grid-cols-2 gap-4 mt-8">
+            {/* Feature grid */}
+            <div className="grid grid-cols-2 gap-5 mt-10">
               {[
                 { label: 'Fully Insured', sublabel: 'Public Liability Cover' },
                 { label: 'CASA Licensed', sublabel: 'ReOC Certified' },
-                { label: 'Fast Delivery', sublabel: '24-48hr Turnaround' },
+                { label: 'Fast Delivery', sublabel: '24–48hr Turnaround' },
                 { label: 'All Formats', sublabel: '4K Video & RAW Photo' },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3">
-                  <div className="mt-1 w-5 h-5 rounded-full bg-brand-500/10 border border-brand-500/30 flex items-center justify-center flex-shrink-0">
-                    <svg viewBox="0 0 12 12" fill="none" className="w-3 h-3">
-                      <path d="M3 6L5 8L9 4" stroke="#14b88a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <div className="mt-0.5 w-4 h-4 rounded-sm border border-brand-500/25 flex items-center justify-center flex-shrink-0"
+                    style={{ background: 'rgba(98,125,150,0.07)' }}>
+                    <svg viewBox="0 0 12 12" fill="none" className="w-2.5 h-2.5">
+                      <path d="M2.5 6L4.5 8L9.5 3.5" stroke={ACCENT} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-white font-semibold text-sm">{item.label}</div>
-                    <div className="text-midnight-500 text-xs">{item.sublabel}</div>
+                    <div className="text-white font-medium text-sm tracking-wide">{item.label}</div>
+                    <div className="text-brand-600 text-xs">{item.sublabel}</div>
                   </div>
                 </div>
               ))}

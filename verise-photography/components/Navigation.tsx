@@ -24,54 +24,46 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-midnight-950/90 backdrop-blur-xl border-b border-midnight-800/50 py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-stone-950/92 backdrop-blur-xl border-b border-stone-800/40 py-3'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <div className="relative w-10 h-10 flex items-center justify-center">
-            <svg viewBox="0 0 40 40" fill="none" className="w-10 h-10">
-              <path
-                d="M20 4L36 12V28L20 36L4 28V12L20 4Z"
-                stroke="#14b88a"
-                strokeWidth="1.5"
-                fill="none"
-                className="transition-all duration-500 group-hover:stroke-[#2dd4a3]"
-              />
-              <path
-                d="M20 8L32 14V26L20 32L8 26V14L20 8Z"
-                fill="rgba(20,184,138,0.1)"
-                className="transition-all duration-500 group-hover:fill-[rgba(20,184,138,0.2)]"
-              />
-              <circle cx="20" cy="20" r="4" fill="#14b88a" className="transition-all duration-500 group-hover:fill-[#2dd4a3]" />
-              <line x1="20" y1="16" x2="20" y2="8" stroke="#14b88a" strokeWidth="1" opacity="0.5" />
-              <line x1="23.46" y1="18" x2="30" y2="14" stroke="#14b88a" strokeWidth="1" opacity="0.5" />
-              <line x1="23.46" y1="22" x2="30" y2="26" stroke="#14b88a" strokeWidth="1" opacity="0.5" />
-              <line x1="20" y1="24" x2="20" y2="32" stroke="#14b88a" strokeWidth="1" opacity="0.5" />
-              <line x1="16.54" y1="22" x2="10" y2="26" stroke="#14b88a" strokeWidth="1" opacity="0.5" />
-              <line x1="16.54" y1="18" x2="10" y2="14" stroke="#14b88a" strokeWidth="1" opacity="0.5" />
+        <a href="#" className="flex items-center gap-4 group">
+          {/* Drone mark — mirrors the logo silhouette */}
+          <div className="relative w-9 h-6 flex items-center justify-center opacity-75 group-hover:opacity-100 transition-opacity duration-300">
+            <svg viewBox="0 0 56 24" fill="none" className="w-full h-full">
+              {/* Left arm */}
+              <line x1="4" y1="12" x2="20" y2="12" stroke="#a8bac8" strokeWidth="1.2" strokeLinecap="round" />
+              <line x1="4" y1="12" x2="4" y2="7" stroke="#a8bac8" strokeWidth="1.2" strokeLinecap="round" />
+              {/* Right arm */}
+              <line x1="52" y1="12" x2="36" y2="12" stroke="#a8bac8" strokeWidth="1.2" strokeLinecap="round" />
+              <line x1="52" y1="12" x2="52" y2="7" stroke="#a8bac8" strokeWidth="1.2" strokeLinecap="round" />
+              {/* Body */}
+              <rect x="20" y="8" width="16" height="8" rx="4" stroke="#a8bac8" strokeWidth="1.2" fill="none" />
+              {/* Lens dot */}
+              <circle cx="28" cy="12" r="2" fill="#a8bac8" />
             </svg>
           </div>
           <div>
-            <span className="text-xl font-bold tracking-tight text-white font-display">
+            <span className="text-[15px] font-bold tracking-[0.18em] text-white font-body">
               VERISE
             </span>
-            <span className="block text-[10px] tracking-[0.3em] text-brand-400 uppercase font-medium -mt-1">
+            <span className="block text-[9px] tracking-[0.35em] text-brand-400 uppercase font-medium -mt-0.5">
               Photography
             </span>
           </div>
         </a>
 
         {/* Desktop Links */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {links.map((link) => (
-            <a key={link.href} href={link.href} className="nav-link text-sm font-medium tracking-wide">
+            <a key={link.href} href={link.href} className="nav-link">
               {link.label}
             </a>
           ))}
-          <a href="#contact" className="btn-primary text-sm !px-6 !py-3">
+          <a href="#contact" className="btn-primary text-sm !px-6 !py-2.5 tracking-widest uppercase text-xs">
             <span>Get a Quote</span>
           </a>
         </div>
@@ -82,30 +74,30 @@ export default function Navigation() {
           className="md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5"
           aria-label="Toggle menu"
         >
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          <span className={`w-5 h-px bg-brand-300 transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+          <span className={`w-5 h-px bg-brand-300 transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+          <span className={`w-5 h-px bg-brand-300 transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
         </button>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-midnight-950/95 backdrop-blur-xl border-b border-midnight-800/50 transition-all duration-500 ${
-          mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
+        className={`md:hidden absolute top-full left-0 right-0 bg-stone-950/97 backdrop-blur-xl border-b border-stone-800/40 transition-all duration-500 ${
+          mobileOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-3 pointer-events-none'
         }`}
       >
-        <div className="px-6 py-6 flex flex-col gap-4">
+        <div className="px-6 py-8 flex flex-col gap-6">
           {links.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-midnight-300 hover:text-white transition-colors text-lg font-medium"
+              className="text-brand-300 hover:text-white transition-colors tracking-widest uppercase text-xs font-medium"
             >
               {link.label}
             </a>
           ))}
-          <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary text-center mt-2">
+          <a href="#contact" onClick={() => setMobileOpen(false)} className="btn-primary text-center text-sm mt-2">
             <span>Get a Quote</span>
           </a>
         </div>
